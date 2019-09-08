@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Skill from './components/Skill';
+import { connect } from 'react-redux';
+import { fetchSkill } from './actions/action';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render(){
+    const { skills, onFetchSkill } = this.props;
+
+    return (
+      <div>
+        <Skill
+          skills={skills}
+          onFetchSkill={onFetchSkill}
+        />
+      </div>
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = (state) =>{
+  return {
+    skills : state.skills
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchSkill : (nickName) =>{
+      dispatch(fetchSkill(nickName));
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
