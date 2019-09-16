@@ -1,38 +1,30 @@
 import React, { Component } from 'react';
-import Skill from './components/Skill';
-import { connect } from 'react-redux';
-import { fetchSkill } from './actions/action';
+import { Normalize } from 'styled-normalize'
+import styled, { ThemeProvider } from 'styled-components';
+import themes from 'components/common/theme/theme';
+import Skills from 'components/skill/Skills';
+import SkillMenuList from 'components/skill/SkillMenuList';
+import Items from 'components/skill/Items';
 
 class App extends Component {
   render(){
-    const { skills, onFetchSkill } = this.props;
-
     return (
-      <div>
-        <Skill
-          skills={skills}
-          onFetchSkill={onFetchSkill}
-        />
-      </div>
+      <React.Fragment>
+        <Normalize/>
+        <ThemeProvider theme={themes}>
+          <Contrainer>
+            <Skills/>
+            <SkillMenuList/>
+            <Items/>
+          </Contrainer>
+        </ThemeProvider>
+      </React.Fragment>
     )
   }
 }
 
-const mapStateToProps = (state) =>{
-  return {
-    skills : state.skills
-  };
-}
+const Contrainer = styled.div`
+  margin : 1% 10% 1% 15%;
+`
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onFetchSkill : (nickName) =>{
-      dispatch(fetchSkill(nickName));
-    }
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;
