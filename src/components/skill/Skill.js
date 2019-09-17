@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import InputText from 'components/common/input/Input';
-import styled from 'styled-components';
 
 class Skill extends Component {
   getLaborDownPercent = (value) => {
@@ -50,20 +49,15 @@ class Skill extends Component {
   }
 
   render(){
-    const { index, skill_name, skill_value } = this.props;
+    const { skill_name, skill_value } = this.props;
 
     return (
-      <SkillContainer key={index}>
+      <React.Fragment>
         <div>{skill_name}</div>
         <InputText value={skill_value} onChange={this.handleInputChange} />
-      </SkillContainer>
+      </React.Fragment>
     )
   }
 }
-
-const SkillContainer = styled.div`
-  width:5%;
-  margin-right: 30px;
-`
 
 export default Skill;

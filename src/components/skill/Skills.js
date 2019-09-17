@@ -3,7 +3,7 @@ import Button from 'components/common/button/Button'
 import Skill from 'components/skill/Skill';
 import { connect } from 'react-redux';
 import { fetchSkill, changeSkill } from 'actions/action';
-import styled from 'styled-components';
+import Flex, { FlexItem } from 'styled-flex-component';
 
 class Skills extends Component {
   handleFetchSkill = () => {
@@ -17,42 +17,44 @@ class Skills extends Component {
     const { skills, onChangeSkill } = this.props;
 
     const skillDiv = skills.map(item => {
-      return <Skill
-        key={item.index}
-        index={item.index}
-        skill_name={item.skill_name}
-        skill_value={item.skill_value}
-        onChangeSkill={onChangeSkill}
-      />
+      return(
+        <FlexItem order={item.index} key={item.index}>
+          <Skill
+            index={item.index}
+            skill_name={item.skill_name}
+            skill_value={item.skill_value}
+            onChangeSkill={onChangeSkill}
+          />
+        </FlexItem>
+      )
     });
 
     return (
-      <div>
-        <div>
-          <select ref="serverName">
-            <option value="ORCHIDNA">오키드나</option>
-            <option value="NUI">누이</option>
-            <option value="HAJE">하제</option>
-            <option value="DAMIAN">다미안</option>
-            <option value="EANNA">에안나</option>
-          </select>
-          <input placeholder="캐릭터명" ref="nickName"/>
-          <Button onClick={this.handleFetchSkill}>숙련도 조회</Button>
-        </div>
-        <SkillsContainer>
+      <React.Fragment>
+        <Flex center full wrap="true">
+          <FlexItem order="1">
+            <select ref="serverName">
+              <option value="ORCHIDNA">오키드나</option>
+              <option value="NUI">누이</option>
+              <option value="HAJE">하제</option>
+              <option value="DAMIAN">다미안</option>
+              <option value="EANNA">에안나</option>
+            </select>
+          </FlexItem>
+          <FlexItem order="2">
+            <input placeholder="캐릭터명" ref="nickName"/>
+          </FlexItem>
+          <FlexItem order="3">
+            <Button onClick={this.handleFetchSkill}>숙련도 조회</Button>
+          </FlexItem>
+        </Flex>
+        <Flex full wrap="true">
           {skillDiv}
-        </SkillsContainer>
-      </div>
+        </Flex>
+      </React.Fragment>
     )
   }
 }
-
-const SkillsContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  flex-wrap: wrap;
-`
 
 const mapStateToProps = (state) =>{
   return {

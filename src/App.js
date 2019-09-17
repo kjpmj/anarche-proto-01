@@ -24,7 +24,7 @@ class App extends Component {
 }
 
 const Contrainer = styled.div`
-  margin : 1% 10% 1% 15%;
+  margin : 1% 10% 1% 10%;
 `
 
 export default App;

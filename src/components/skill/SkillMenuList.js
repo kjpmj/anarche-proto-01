@@ -2,24 +2,28 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SkillMenu from './SkillMenu';
 import { setSkillMenu } from 'actions/action';
+import Flex, { FlexItem } from 'styled-flex-component';
 
 class SkillMenuList extends Component{
   render() {
     const { onSkillMenuClick, skillMenuList } = this.props;
 
     const skill_menu = skillMenuList.map((skillMenu) => {
-      return <SkillMenu
-        key={skillMenu.index}
-        skillMenu={skillMenu}
-        onSkillMenuClick={onSkillMenuClick}
-        display={skillMenu.display}
-      />
+      return (
+        <FlexItem order={skillMenu.index} key={skillMenu.index}>
+          <SkillMenu
+            skillMenu={skillMenu}
+            onSkillMenuClick={onSkillMenuClick}
+            display={skillMenu.display}
+          />
+        </FlexItem>
+      )
     });
 
     return (
-      <div>
+      <Flex full wrap="true">
         {skill_menu}
-      </div>
+      </Flex>
     )
   }
 }
