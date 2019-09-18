@@ -5,12 +5,15 @@ import themes from 'components/common/theme/theme';
 import Skills from 'components/skill/Skills';
 import SkillMenuList from 'components/skill/SkillMenuList';
 import Items from 'components/skill/Items';
+import GlobalStyle from 'style/GlobalStyle';
+
 
 class App extends Component {
   render(){
     return (
       <React.Fragment>
         <Normalize/>
+        <GlobalStyle/>
         <ThemeProvider theme={themes}>
           <Contrainer>
             <Skills/>

@@ -24,6 +24,8 @@ const Button = styled.button`
       return `color : ${props.theme.default().textColor}`
     }
   }}
+  border : none;
+  padding : 0.2rem 0.2rem;
 `
 
 export default Button;
