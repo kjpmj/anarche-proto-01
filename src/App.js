@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Normalize/>
-        <GlobalStyle/>
+        {/* <GlobalStyle/> */}
         <ThemeProvider theme={themes}>
           <Contrainer>
             <Skills/>
