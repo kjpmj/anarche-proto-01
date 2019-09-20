@@ -45,7 +45,7 @@ class Skills extends Component {
             <input placeholder="캐릭터명" ref="nickName"/>
           </FlexItem>
           <FlexItem order="3">
-            <Button onClick={this.handleFetchSkill}>숙련도 조회</Button>
+            <Button onClick={this.handleFetchSkill} bangle>숙련도 조회</Button>
           </FlexItem>
         </Flex>
         <Flex full wrap="true">

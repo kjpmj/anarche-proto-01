@@ -6,6 +6,7 @@ import Skills from 'components/skill/Skills';
 import SkillMenuList from 'components/skill/SkillMenuList';
 import Items from 'components/skill/Items';
 import GlobalStyle from 'style/GlobalStyle';
+import 'style/font.css';
 
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Normalize/>
-        {/* <GlobalStyle/> */}
+        <GlobalStyle/>
         <ThemeProvider theme={themes}>
           <Contrainer>
             <Skills/>

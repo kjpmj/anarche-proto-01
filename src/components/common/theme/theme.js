@@ -3,11 +3,12 @@ const themes = {
     main : '#3498db',
     success : '#27ae60',
     error : '#e74c3c',
-    textDefault : '#ffffff'
+    textDefault : '#ffffff',
+    bgDefault : '#3498db'
   },
   default () {
     return {
-      bgColor : this.color.main,
+      bgColor : this.color.bgDefault,
       textColor : this.color.textDefault
     }
   }
