@@ -1,9 +1,19 @@
 import styled, { keyframes, css } from 'styled-components';
 import _ from 'underscore';
 
+// const height = 60;
+// const width = height * 1.618;
+
+// const ButtonSizeMixin = css`
+//   width : ${width}px;
+//   height : ${height}px;
+// `
+
 const Button = styled.button`
   background-color : ${props=>{
-    if(props.bgColor){
+    if(props.disabled){
+      return props.theme.color.bgDisabled;
+    }else if(props.bgColor){
       if(_.contains(_.keys(props.theme.color), props.bgColor)){
         return props.theme.color[props.bgColor]
       }else{
@@ -14,7 +24,9 @@ const Button = styled.button`
     }
   }}
   color : ${props=>{
-    if(props.textColor){
+    if(props.disabled){
+      return props.theme.color.textDisabled;
+    }else if(props.textColor){
       if(_.contains(_.keys(props.theme.color), props.textColor)){
         return props.theme.color[props.textColor]
       }else{
@@ -26,20 +38,23 @@ const Button = styled.button`
   }}
 
   border : none;
-  border-radius: 2px;
-  padding : 0.2rem 0.2rem;
-
+  padding : 0.5rem 0.7rem 0.5rem 0.7rem;
+  min-width : 80px;
   background-position: center;
   &:hover {
-    cursor : pointer;
+    cursor : ${props=>{
+      if(props.disabled){
+        return 'normal';
+      }else{
+        return 'pointer';
+      }
+    }}
+    // text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
   }
   &:active {
-    background-color: #6eb9f7;
-    background-size: 100%;
-    transition: all 2s;
+    box-shadow: inset 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 `
-
 
 
 export default Button;

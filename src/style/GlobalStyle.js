@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'NanumSquareRoundR', sans-serif;
     font-size: 16px;
   }
+
 `
 
 export default GlobalStyle;

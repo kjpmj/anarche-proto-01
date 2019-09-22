@@ -15,7 +15,7 @@ class App extends Component {
       <React.Fragment>
         <Normalize/>
         <GlobalStyle/>
-        <ThemeProvider theme={themes}>
+        <ThemeProvider theme={themes.default_theme}>
           <Contrainer>
             <Skills/>
             <SkillMenuList/>
@@ -29,6 +29,9 @@ class App extends Component {
 
 const Contrainer = styled.div`
   margin : 1% 10% 1% 10%;
+  background-color : ${props => {
+    return props.theme.color.backGround;
+  }}
 `
 
 export default App;
