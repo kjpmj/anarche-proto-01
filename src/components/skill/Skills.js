@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Button from 'components/common/button/Button'
+import Button from 'components/common/button/Button';
+import Spinner from 'components/common/spinner/Spinner';
 import Skill from 'components/skill/Skill';
 import { connect } from 'react-redux';
-import { fetchSkill, changeSkill } from 'actions/action';
+import { changeSkill, setSkill } from 'actions/action';
+import { fetch } from 'actions/actionCommon';
 import Flex, { FlexItem } from 'styled-flex-component';
 
 class Skills extends Component {
@@ -10,14 +12,20 @@ class Skills extends Component {
     const { onFetchSkill } = this.props;
     const serverName = this.refs.serverName.value.trim();
     const nickName = this.refs.nickName.value.trim();
-    onFetchSkill(serverName, nickName);
-  }
+
+    const method = 'get';
+    const url = `skills/${serverName}/${nickName}`;
+    const params = {};
+    const callback = setSkill;
+
+    onFetchSkill(method, url, params, callback);
+  };
 
   render() {
     const { skills, onChangeSkill } = this.props;
 
     const skillDiv = skills.map(item => {
-      return(
+      return (
         <FlexItem order={item.index} key={item.index}>
           <Skill
             index={item.index}
@@ -26,7 +34,7 @@ class Skills extends Component {
             onChangeSkill={onChangeSkill}
           />
         </FlexItem>
-      )
+      );
     });
 
     return (
@@ -42,7 +50,7 @@ class Skills extends Component {
             </select>
           </FlexItem>
           <FlexItem order="2">
-            <input placeholder="캐릭터명" ref="nickName"/>
+            <input placeholder="캐릭터명" ref="nickName" />
           </FlexItem>
           <FlexItem order="3">
             <Button onClick={this.handleFetchSkill}>숙련도 조회</Button>
@@ -51,29 +59,32 @@ class Skills extends Component {
         <Flex full wrap="true">
           {skillDiv}
         </Flex>
+        <Flex full center>
+          <Spinner />
+        </Flex>
       </React.Fragment>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = state => {
   return {
-    skills : state.skills
+    skills: state.skills,
   };
-}
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    onFetchSkill : (serverName, nickName) =>{
-      dispatch(fetchSkill(serverName, nickName));
+    onFetchSkill: (method, url, params, callback) => {
+      dispatch(fetch(method, url, params, callback));
     },
-    onChangeSkill : (skill) =>{
+    onChangeSkill: skill => {
       dispatch(changeSkill(skill));
-    }
-  }
-}
+    },
+  };
+};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Skills);
