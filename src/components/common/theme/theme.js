@@ -1,43 +1,44 @@
 const default_theme = {
-  color : {
+  color: {
     backGround: '#ffffff',
-    main : '#3498db',
-    success : '#27ae60',
-    error : '#e74c3c',
-    textDefault : '#ffffff',
-    textDisabled : '#bdc3c7',
-    bgDefault : '#3498db',
-    bgDisabled : '#7f8c8d'
+    main: '#3498db',
+    success: '#27ae60',
+    error: '#e74c3c',
+    textDefault: '#ffffff',
+    textDisabled: '#bdc3c7',
+    bgDefault: '#3498db',
+    bgDisabled: '#7f8c8d',
+    textLabel: '#bdc3c7',
+    textInput: '#2d3436',
   },
-  default () {
+  default() {
     return {
-      bgColor : this.color.bgDefault,
-      textColor : this.color.textDefault
-    }
-  }
-}
+      bgColor: this.color.bgDefault,
+      textColor: this.color.textDefault,
+    };
+  },
+};
 
 const dark_theme = {
-  color : {
-    backGround : '#2c3e50',
-    main : '#3498db',
-    success : '#27ae60',
-    error : '#e74c3c',
-    textDefault : '#ffffff',
-    bgDefault : '#3498db'
+  color: {
+    backGround: '#2c3e50',
+    main: '#3498db',
+    success: '#27ae60',
+    error: '#e74c3c',
+    textDefault: '#ffffff',
+    bgDefault: '#3498db',
   },
-  default () {
+  default() {
     return {
-      bgColor : this.color.bgDefault,
-      textColor : this.color.textDefault
-    }
-  }
-}
-
+      bgColor: this.color.bgDefault,
+      textColor: this.color.textDefault,
+    };
+  },
+};
 
 const themes = {
   default_theme,
-  dark_theme
-}
+  dark_theme,
+};
 
 export default themes;

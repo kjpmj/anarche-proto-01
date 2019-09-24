@@ -1,8 +1,15 @@
 import axios from 'axios';
 
+export const SET_LOADING = 'SET_LOADING';
+export const setLoading = isLoading => {
+  return { type: SET_LOADING, isLoading };
+};
+
 // fetch 공통
 export const fetch = (method, url, params, callback) => {
   return dispatch => {
+    dispatch(setLoading(true));
+
     axios({
       method: method,
       url: url,
@@ -13,7 +20,10 @@ export const fetch = (method, url, params, callback) => {
           dispatch(callback(resp.data));
         } else {
         }
+        dispatch(setLoading(false));
       })
-      .catch(err => {});
+      .catch(err => {
+        dispatch(setLoading(false));
+      });
   };
 };
