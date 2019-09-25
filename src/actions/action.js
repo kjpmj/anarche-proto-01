@@ -4,8 +4,6 @@ export const SET_SKILL = 'SET_SKILL';
 export const CHANGE_SKILL = 'CHANGE_SKILL';
 /** 스킬메뉴 셋팅*/
 export const SET_SKILL_MENU = 'SET_SKILL_MENU';
-/** 숙련도 조회할 캐릭터명 셋팅*/
-export const SET_CHARACTER_NAME = 'SET_CHARACTER_NAME';
 
 /** 숙련도 셋팅 액셩생성 함수*/
 export const setSkill = skills => {
@@ -20,9 +18,4 @@ export const changeSkill = skill => {
 /** 스킬메뉴 셋팅 액션생성 함수*/
 export const setSkillMenu = skillMenu => {
   return { type: SET_SKILL_MENU, skillMenu };
-};
-
-/** 숙련도 조회할 캐릭터명 액션생성 함수*/
-export const setCharacterName = characterName => {
-  return { type: SET_CHARACTER_NAME, characterName };
 };

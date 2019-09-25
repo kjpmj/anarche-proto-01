@@ -91,20 +91,10 @@ const isLoading = (state = false, action) => {
   }
 };
 
-const characterName = (state = '', action) => {
-  switch (action.type) {
-    case SET_CHARACTER_NAME:
-      return action.characterName;
-    default:
-      return state;
-  }
-};
-
 const rootReducer = combineReducers({
   skills,
   skillMenuList,
   isLoading,
-  characterName,
 });
 
 export default rootReducer;

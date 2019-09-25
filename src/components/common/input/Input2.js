@@ -1,11 +1,21 @@
 import styled, { keyframes } from 'styled-components';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Input2 = props => {
+const Input2 = ({ value, placeholder, onChange }) => {
+  const [currentValue, setCurrentValue] = useState('');
+
+  useEffect(() => {
+    onChange(currentValue);
+  }, [currentValue]);
+
+  const handleInputChange = e => {
+    setCurrentValue(e.target.value);
+  };
+
   return (
     <WrapperLabel>
-      <InnerInput value={props.value} onChange={props.onChange} />
-      <InnerLabelSpan>{props.placeholder}</InnerLabelSpan>
+      <InnerInput value={currentValue} onChange={handleInputChange} />
+      <InnerLabelSpan>{placeholder}</InnerLabelSpan>
       <InnerBorderSpan></InnerBorderSpan>
     </WrapperLabel>
   );

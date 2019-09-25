@@ -3,6 +3,9 @@ import InputText from 'components/common/input/Input';
 import Input2 from 'components/common/input/Input2';
 
 class Skill extends Component {
+  state = {
+    skill_value: 0,
+  };
   getLaborDownPercent = value => {
     if (value < 30000) {
       return 0;
@@ -41,6 +44,19 @@ class Skill extends Component {
     onChangeSkill(skill);
   };
 
+  handleInputChange2 = skill_value => {
+    const { index, skill_name, onChangeSkill } = this.props;
+
+    const skill = {
+      index,
+      skill_name,
+      skill_value: parseInt(skill_value),
+      labor_down_percent: this.getLaborDownPercent(skill_value),
+    };
+
+    onChangeSkill(skill);
+  };
+
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.skill_value === nextProps.skill_value) {
       return false;
@@ -51,16 +67,16 @@ class Skill extends Component {
 
   render() {
     const { skill_name, skill_value } = this.props;
-
+    console.log(skill_value);
     return (
       <React.Fragment>
-        {/* <div>{skill_name}</div>
-        <InputText value={skill_value} onChange={this.handleInputChange} /> */}
-        <Input2
+        <div>{skill_name}</div>
+        <InputText value={skill_value} onChange={this.handleInputChange} />
+        {/* <Input2
           value={skill_value}
-          onChange={this.handleInputChange}
+          onChange={this.handleInputChange2}
           placeholder={skill_name}
-        />
+        /> */}
       </React.Fragment>
     );
   }
