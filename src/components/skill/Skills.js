@@ -38,10 +38,10 @@ class Skills extends Component {
   };
 
   render() {
+    console.log('skills');
     const { skills, onChangeSkill, isLoading } = this.props;
 
     const skillDiv = skills.map(item => {
-      console.log(item);
       return (
         <FlexItem order={item.index} key={item.index}>
           <SkillWrapper>

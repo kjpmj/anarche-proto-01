@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import React, { useState, useEffect } from 'react';
 
 const Input2 = ({ value, placeholder, onChange }) => {
-  const [currentValue, setCurrentValue] = useState('');
+  const [currentValue, setCurrentValue] = useState(value);
 
   useEffect(() => {
     onChange(currentValue);

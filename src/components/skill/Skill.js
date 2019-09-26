@@ -66,12 +66,12 @@ class Skill extends Component {
   }
 
   render() {
+    console.log('skill');
     const { skill_name, skill_value } = this.props;
-    console.log(skill_value);
     return (
       <React.Fragment>
-        <div>{skill_name}</div>
-        <InputText value={skill_value} onChange={this.handleInputChange} />
+        {/* <div>{skill_name}</div>
+        <InputText value={skill_value} onChange={this.handleInputChange} /> */}
         {/* <Input2
           value={skill_value}
           onChange={this.handleInputChange2}
